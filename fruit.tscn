@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://2ok7ouaashu7"]
+
+[ext_resource type="Script" path="res://fruit.gd" id="1_c7sba"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aonht"]
+bounce = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5lf8q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unm7j"]
+albedo_color = Color(0.996078, 0.415686, 0.545098, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f70ka"]
+material = SubResource("StandardMaterial3D_unm7j")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dcby5"]
+radius = 0.51
+
+[node name="fruit" type="RigidBody3D"]
+top_level = true
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_aonht")
+script = ExtResource("1_c7sba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_5lf8q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_f70ka")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_dcby5")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
