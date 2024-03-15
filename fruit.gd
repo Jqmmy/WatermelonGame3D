@@ -4,16 +4,23 @@ class_name fruit
 enum fruit_id{
 	cherry = 0,
 	strawberry = 1,
-	grapes = 2
+	grapes = 2,
+	dekopans = 3,
+	orange = 4,
+	apple = 5,
+	pear = 6,
+	peach = 7,
+	pineapple = 8,
+	melon = 9,
+	watermelon = 10
 }
 var fruit_type:fruit_id
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var mesh = $mesh
+@onready var fruit_collision = $"fruit collision"
+@onready var area_3d_collision = $Area3D/area3D
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _ready():
 	pass
 
 func _on_body_entered(body):
@@ -24,3 +31,28 @@ func _on_body_entered(body):
 		if body.fruit_type == fruit_type:
 			FruitCombiner.add_fruit(self)
 
+func set_fruit_type(which_fruit:fruit_id):
+	area_3d_collision.shape.radius = fruit_collision.shape.radius + 0.01
+	match fruit_type:
+		fruit_id.cherry:
+			pass
+		fruit_id.strawberry:
+			pass
+		fruit_id.grapes:
+			pass
+		fruit_id.dekopans:
+			pass
+		fruit_id.orange:
+			pass
+		fruit_id.apple:
+			pass
+		fruit_id.pear:
+			pass
+		fruit_id.peach:
+			pass
+		fruit_id.pineapple:
+			pass
+		fruit_id.melon:
+			pass
+		fruit_id.watermelon:
+			pass
