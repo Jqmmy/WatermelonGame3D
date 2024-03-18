@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxhcxdh4drn63"]
+[gd_scene load_steps=6 format=3 uid="uid://dxhcxdh4drn63"]
 
-[ext_resource type="PackedScene" uid="uid://e7xhukfcafhq" path="res://camera.tscn" id="1_ouvk7"]
+[ext_resource type="PackedScene" uid="uid://e7xhukfcafhq" path="res://Prefabs/Camera/camera.tscn" id="1_v0s3g"]
+[ext_resource type="PackedScene" uid="uid://2ok7ouaashu7" path="res://Prefabs/Fruit/fruit.tscn" id="2_ayh0g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1shp8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -37,5 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.06698, 0)
 operation = 2
 size = Vector3(7.4, 10, 7.4)
 
-[node name="pivoty" parent="." instance=ExtResource("1_ouvk7")]
+[node name="pivoty" parent="." instance=ExtResource("1_v0s3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="fruit" parent="." instance=ExtResource("2_ayh0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.969908, 2.87821, 0.887323)
