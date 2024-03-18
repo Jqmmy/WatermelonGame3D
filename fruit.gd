@@ -1,27 +1,34 @@
 extends RigidBody3D
 class_name fruit
 
-enum fruit_id{
-	cherry = 0,
-	strawberry = 1,
-	grapes = 2,
-	dekopans = 3,
-	orange = 4,
-	apple = 5,
-	pear = 6,
-	peach = 7,
-	pineapple = 8,
-	melon = 9,
-	watermelon = 10
+var alive_timer:float
+
+#id's that hold data (ine order) like name, mesh and size of the fruit
+var fruit_id = {
+	fruit1 = ["cherry", "will have mesh info here", "size of the fruit here"],
+	fruit2 = ["strawberry"],
+	fruit3 = ["grapes"],
+	fruit4 = ["dekopans"],
+	fruit5 = ["orange"],
+	fruit6 = ["apple"],
+	fruit7 = ["pear"],
+	fruit8 = ["peach"],
+	fruit9 = ["pineapple"],
+	fruit10 = ["melon"],
+	fruit11 = ["watermelon"]
 }
-var fruit_type:fruit_id
+var fruit_type
 
 @onready var mesh = $mesh
 @onready var fruit_collision = $"fruit collision"
 @onready var area_3d_collision = $Area3D/area3D
 
 func _ready():
-	pass
+	init_fruit_type()
+	print(area_3d_collision.shape.radius)
+	
+func _process(_delta):
+	alive_timer += 0.001
 
 func _on_body_entered(body):
 	if body == self:
@@ -29,10 +36,15 @@ func _on_body_entered(body):
 	
 	if body is fruit:
 		if body.fruit_type == fruit_type:
-			FruitCombiner.add_fruit(self)
+			if body.alive_timer > alive_timer:
+				return
+			var new_position = body.position + position
+			body.free()
+			position = new_position / 2
+			print(fruit_id[1])
 
-func set_fruit_type(which_fruit:fruit_id):
-	area_3d_collision.shape.radius = fruit_collision.shape.radius + 0.01
+func init_fruit_type():
+	area_3d_collision.shape.radius = fruit_collision.shape.radius + 0.1
 	match fruit_type:
 		fruit_id.cherry:
 			pass

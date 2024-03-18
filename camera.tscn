@@ -3,12 +3,11 @@
 [ext_resource type="Script" path="res://camera.gd" id="1_eemej"]
 [ext_resource type="Texture2D" uid="uid://d203kpvs6lely" path="res://target.png" id="2_e8m1h"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_gtlqj"]
-radius = 0.05
-height = 0.1
+[sub_resource type="SphereMesh" id="SphereMesh_4q8df"]
+radius = 0.1
+height = 0.2
 
 [node name="pivoty" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.324635)
 script = ExtResource("1_eemej")
 
 [node name="pivotX" type="Marker3D" parent="."]
@@ -18,57 +17,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.10607)
 fov = 85.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_gtlqj")
+mesh = SubResource("SphereMesh_4q8df")
 
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.5, 0)
 size = Vector3(1, 15, 1)
 texture_albedo = ExtResource("2_e8m1h")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.555
-anchor_right = 0.25
-anchor_bottom = 1.0
-offset_bottom = -0.359985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-
-[node name="Z axis" type="VSlider" parent="Control/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 3.8
-min_value = 0.3
-max_value = 7.0
-step = 0.1
-value = 3.7
-
-[node name="Button" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "DROP
-FRUIT"
-
-[node name="X axis" type="HSlider" parent="Control/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-min_value = 0.3
-max_value = 7.0
-step = 0.1
-value = 3.7
-
-[connection signal="pressed" from="Control/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

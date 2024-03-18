@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://fruit.gd" id="1_c7sba"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aonht"]
-bounce = 0.25
+bounce = 0.3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5lf8q"]
 
@@ -14,7 +14,6 @@ albedo_color = Color(0.996078, 0.415686, 0.545098, 1)
 material = SubResource("StandardMaterial3D_unm7j")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dcby5"]
-radius = 0.51
 
 [node name="fruit" type="RigidBody3D"]
 top_level = true
