@@ -5,17 +5,17 @@ var alive_timer:float
 
 #id's that hold data (in order) like name, mesh, size of the fruit and size of combining collision.
 var fruit_id = {
-	1: ["cherry", preload("res://assets/Fruit Models/CherryMesh.tres"), 0.25, 0.26],
+	1: ["cherry", preload("res://assets/Fruit Models/Cherry.tres"), 0.25, 0.26],
 	2: ["strawberry", preload("res://assets/Fruit Models/Strawberry.tres"), 0.5, 0.56],
 	3: ["grape", preload("res://assets/Fruit Models/Grape.tres"), 0.75, 0.76],
-	4: ["dekopans", preload("res://assets/Fruit Models/dekopansMesh.tres"), 1.0, 1.01],
-	5: ["orange", "mesh here", 1.25, 1.26],
-	6: ["apple", "mesh here", 1.5, 1.56],
-	7: ["pear", "mesh here", 1.75, 1.76],
-	8: ["peach", "mesh here", 2.0, 2.01],
-	9: ["pineapple", "mesh here", 2.25, 2.26],
-	10: ["melon", "mesh here", 2.5, 2.51],
-	11: ["watermelon", "mesh here", 2.75, 2.76]
+	4: ["dekopans", preload("res://assets/Fruit Models/Dekopan.tres"), 1.0, 1.01],
+	5: ["orange", preload("res://assets/Fruit Models/Orange.tres"), 1.25, 1.26],
+	6: ["apple", preload("res://assets/Fruit Models/Apple.tres"), 1.5, 1.56],
+	7: ["pear", preload("res://assets/Fruit Models/Pear.tres"), 1.75, 1.76],
+	8: ["peach", preload("res://assets/Fruit Models/Peach.tres"), 2.0, 2.01],
+	9: ["pineapple", preload("res://assets/Fruit Models/Pineapple.tres"), 2.25, 2.26],
+	10: ["melon", preload("res://assets/Fruit Models/Cantelope.tres"), 2.5, 2.51],
+	11: ["watermelon", preload("res://assets/Fruit Models/Watermelon.tres"), 2.75, 2.76]
 }
 var number_id:int = 1
 var fruit_type = fruit_id[1]
@@ -47,7 +47,6 @@ func _on_body_entered(body):
 				fruit_type = fruit_id[number_id + 1]
 				number_id += 1
 				init_fruit_type()
-				print(fruit_type)
 				break
 
 func init_fruit_type():
