@@ -22,8 +22,8 @@ window/stretch/aspect="ignore"
 [file_customization]
 
 folder_colors={
-"res://Prefabs/": "orange",
 "res://Scenes/": "pink",
+"res://Scenes/Prefabs/": "orange",
 "res://assets/": "teal"
 }
 

@@ -6,7 +6,7 @@ var movement_speed:float = 0.05
 @onready var pivot_x = $pivotX
 @onready var camera = $pivotX/Camera3D
 
-const FRUIT = preload("res://fruit.tscn")
+const FRUIT = preload("res://Scenes/Prefabs/Fruit/fruit.tscn")
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
