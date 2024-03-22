@@ -5,9 +5,13 @@ var movement_speed:float = 0.05
 
 @onready var pivot_x = $pivotX
 @onready var camera = $pivotX/Camera3D
+@onready var timer = $Timer
+@onready var score_n = $UI/MarginContainer/PanelContainer/VBoxContainer/Score_N
+@onready var high_score_n = $UI/MarginContainer/PanelContainer/VBoxContainer/High_Score_N
 
 const FRUIT = preload("res://Scenes/Prefabs/Fruit/fruit.tscn")
 func _ready():
+	add_child(FRUIT.instantiate())
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
@@ -18,6 +22,8 @@ func _unhandled_input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+#region Camera movement
+
 	var input_dir = Input.get_vector("camera left","camera right","camera up","camera down")
 	var direction = transform.basis * Vector3(input_dir.x, 0, input_dir.y)
 	if direction:
@@ -32,6 +38,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("camera closer"):
 		camera.position.z -= 0.5
 	camera.position.z = clamp(camera.position.z, 0.5, 10)
+#endregion
 	
-	if Input.is_action_just_pressed("drop fruit"):
-		add_child(FRUIT.instantiate())
+	score_n.text = str(ScoreKeeper.score)
+	high_score_n.text = str(ScoreKeeper.high_score)
+	
+	if Input.is_action_just_pressed("drop fruit") and timer.is_stopped():
+		timer.start()
+
+func _on_timer_timeout():
+	add_child(FRUIT.instantiate())

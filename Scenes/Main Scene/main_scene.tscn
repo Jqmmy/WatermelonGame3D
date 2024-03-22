@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxhcxdh4drn63"]
+[gd_scene load_steps=14 format=3 uid="uid://dxhcxdh4drn63"]
 
+[ext_resource type="Script" path="res://Scenes/Main Scene/main_scene.gd" id="1_ch7di"]
 [ext_resource type="Shader" path="res://assets/Materials&Shaders/Glass.gdshader" id="1_jekx0"]
+[ext_resource type="Texture2D" uid="uid://c5wf4ayaxtasn" path="res://assets/Misc/sky.jpg" id="1_sjnqg"]
 [ext_resource type="PackedScene" uid="uid://e7xhukfcafhq" path="res://Scenes/Prefabs/Camera/camera.tscn" id="1_v0s3g"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1shp8"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_38mt0"]
+panorama = ExtResource("1_sjnqg")
 
 [sub_resource type="Sky" id="Sky_vpe78"]
-sky_material = SubResource("ProceduralSkyMaterial_1shp8")
+sky_material = SubResource("PanoramaSkyMaterial_38mt0")
 
 [sub_resource type="Environment" id="Environment_8rsh8"]
 background_mode = 2
@@ -24,14 +25,29 @@ shader_parameter/roughness = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/edge_color = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_v7lns"]
+size = Vector3(2.65625, 1, 9.0766)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocjt8"]
+size = Vector3(10.2335, 1, 3.71143)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vh7t"]
+size = Vector3(2.69226, 1, 11.02)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wpaer"]
+size = Vector3(9.98102, 1, 2.22266)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pecvs"]
+size = Vector3(7.5, 1, 7.5)
+
 [node name="MainScene" type="Node3D"]
+script = ExtResource("1_ch7di")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8rsh8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
+transform = Transform3D(1, 0, 0, 0, -0.0871558, 0.996195, 0, -0.996195, -0.0871558, 0, 5.43006, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -50,3 +66,28 @@ material = SubResource("ShaderMaterial_fwrhn")
 
 [node name="pivoty" parent="." instance=ExtResource("1_v0s3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="Death box" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Death box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11718, -0.25, -0.284515)
+shape = SubResource("BoxShape3D_v7lns")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Death box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0160217, -0.25, -5.63599)
+shape = SubResource("BoxShape3D_ocjt8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Death box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07859, -0.25, -0.0563965)
+shape = SubResource("BoxShape3D_5vh7t")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Death box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441742, -0.25, 4.84441)
+shape = SubResource("BoxShape3D_wpaer")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Death box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26, 0)
+shape = SubResource("BoxShape3D_pecvs")
+
+[connection signal="body_entered" from="Death box" to="." method="_on_death_box_body_entered"]

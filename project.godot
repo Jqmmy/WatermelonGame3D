@@ -14,9 +14,13 @@ config/name="WatermelonGame3D"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SaverLoader="*res://Globals/saver_loader.gd"
+ScoreKeeper="*res://Globals/score_keeper.gd"
+
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 

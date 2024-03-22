@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://ipa46xvdrf2d"]
+
+[ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_yxpkv"]
+[ext_resource type="ArrayMesh" uid="uid://ccvxv0ju8880w" path="res://assets/Fruit Models/Cherry.tres" id="2_dkp7i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe8rx"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uuycx"]
+material = SubResource("StandardMaterial3D_xe8rx")
+size = Vector3(7, 5, 7)
+
+[sub_resource type="Animation" id="Animation_3k65v"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5lli"]
+_data = {
+"RESET": SubResource("Animation_3k65v")
+}
+
+[node name="Main Menu" type="Node3D"]
+script = ExtResource("1_yxpkv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_uuycx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19995, 0)
+mesh = ExtResource("2_dkp7i")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18084, 2.2905, 1.61453)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c5lli")
+}
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 31.0
+offset_top = 13.0
+offset_right = 369.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 100
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 231.5
+offset_right = 249.0
+offset_bottom = 376.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "PLAY"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

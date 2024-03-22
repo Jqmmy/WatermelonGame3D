@@ -14,7 +14,6 @@ resource_local_to_scene = true
 radius = 0.26
 
 [node name="fruit" type="RigidBody3D"]
-top_level = true
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_aonht")
 script = ExtResource("1_ytq81")
