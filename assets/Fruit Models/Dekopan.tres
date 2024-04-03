@@ -2,9 +2,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7uk1"]
 resource_name = "Dekopans"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.823529, 0.396078, 0.215686, 1)
+roughness = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vbu6w"]
 _surfaces = [{

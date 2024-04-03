@@ -2,15 +2,17 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu0u2"]
 resource_name = "Leaf.001"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.321569, 0.752941, 0, 1)
+roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pih7m"]
 resource_name = "Pineapple"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.968627, 0.862745, 0, 1)
+roughness = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e7i74"]
 _surfaces = [{

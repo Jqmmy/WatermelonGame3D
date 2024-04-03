@@ -2,9 +2,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6io5j"]
 resource_name = "cantelope"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.529412, 0.882353, 0.47451, 1)
+roughness = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bku7s"]
 _surfaces = [{

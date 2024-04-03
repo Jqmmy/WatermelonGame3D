@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://2ok7ouaashu7"]
+[gd_scene load_steps=6 format=3 uid="uid://2ok7ouaashu7"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/Fruit/fruit.gd" id="1_ytq81"]
+[ext_resource type="AudioStream" uid="uid://b0tbjfkt55bd7" path="res://assets/Sounds&Music/POP.mp3" id="2_d7arx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aonht"]
 bounce = 0.3
@@ -29,4 +30,11 @@ collision_layer = 0
 [node name="area3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_dcby5")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d7arx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

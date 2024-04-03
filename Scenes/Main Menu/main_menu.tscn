@@ -1,12 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://ipa46xvdrf2d"]
+[gd_scene load_steps=11 format=3 uid="uid://ipa46xvdrf2d"]
 
 [ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_yxpkv"]
 [ext_resource type="ArrayMesh" uid="uid://ccvxv0ju8880w" path="res://assets/Fruit Models/Cherry.tres" id="2_dkp7i"]
+[ext_resource type="Theme" uid="uid://cy62ujnjkosxx" path="res://assets/Materials&Shaders/UI Theme.tres" id="3_2bqe8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fp1v1"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_01ij1"]
+sky_material = SubResource("ProceduralSkyMaterial_fp1v1")
+
+[sub_resource type="Environment" id="Environment_y818q"]
+background_mode = 2
+sky = SubResource("Sky_01ij1")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe8rx"]
 cull_mode = 1
 shading_mode = 0
-albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
+albedo_color = Color(0.223529, 0.698039, 0.85098, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uuycx"]
 material = SubResource("StandardMaterial3D_xe8rx")
@@ -22,6 +36,13 @@ _data = {
 
 [node name="Main Menu" type="Node3D"]
 script = ExtResource("1_yxpkv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y818q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
@@ -41,27 +62,57 @@ libraries = {
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Control"]
-offset_left = 31.0
-offset_top = 13.0
-offset_right = 369.0
-offset_bottom = 150.0
-theme_override_font_sizes/font_size = 100
-
-[node name="Button" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = 231.5
-offset_right = 249.0
-offset_bottom = 376.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_2bqe8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.221
+anchor_bottom = 0.5
+offset_top = -143.0
+offset_right = 249.0
+offset_bottom = 143.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "HIGH SCORE: "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Play" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
 theme_override_font_sizes/font_size = 100
 text = "PLAY"
 
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 134.0
+grow_vertical = 0
+size_flags_horizontal = 0
+text = "MADE BY: JAMMY"
+
+[connection signal="mouse_entered" from="Control/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Play" to="." method="_on_play_mouse_exited"]
+[connection signal="pressed" from="Control/VBoxContainer/Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_button_2_pressed"]

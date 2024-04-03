@@ -2,15 +2,17 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdor0"]
 resource_name = "Stem"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.435294, 0.823529, 0, 1)
+roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf2lx"]
 resource_name = "Pear"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.87451, 0.854902, 0.54902, 1)
+roughness = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ayi32"]
 _surfaces = [{

@@ -2,17 +2,24 @@ extends Node3D
 
 var camera_speed :float = 0.001
 var movement_speed:float = 0.05
+var escaped:bool = true
 
 @onready var pivot_x = $pivotX
 @onready var camera = $pivotX/Camera3D
 @onready var timer = $Timer
-@onready var score_n = $UI/MarginContainer/PanelContainer/VBoxContainer/Score_N
-@onready var high_score_n = $UI/MarginContainer/PanelContainer/VBoxContainer/High_Score_N
+@onready var score_n = $UI/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/Score_N
+@onready var high_score_n = $UI/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/High_Score_N
+@onready var escape_menu = $"UI/escape menu"
+@onready var settings = $UI/settings
+@onready var debug_menu = $"UI/Debug Menu"
+@onready var fps = $"UI/Debug Menu/FPS"
+
 
 const FRUIT = preload("res://Scenes/Prefabs/Fruit/fruit.tscn")
 func _ready():
-	add_child(FRUIT.instantiate())
+	escape_menu.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	add_child(FRUIT.instantiate())
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -38,13 +45,44 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("camera closer"):
 		camera.position.z -= 0.5
 	camera.position.z = clamp(camera.position.z, 0.5, 10)
+	
+	if Input.is_action_just_pressed("escape"):
+		escaped = !escaped
+		if escaped:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			escape_menu.hide()
+			settings.hide()
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			escape_menu.show()
 #endregion
 	
 	score_n.text = str(ScoreKeeper.score)
 	high_score_n.text = str(ScoreKeeper.high_score)
+	fps.text = str(Engine.get_frames_per_second())
 	
 	if Input.is_action_just_pressed("drop fruit") and timer.is_stopped():
 		timer.start()
 
 func _on_timer_timeout():
 	add_child(FRUIT.instantiate())
+
+func _on_settings_pressed():
+	settings.show()
+	escape_menu.hide()
+
+
+func _on_button_2_pressed():
+	get_tree().quit()
+
+func _on_check_button_toggled(toggled_on):
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func _on_show_fps_toggled(toggled_on):
+	if toggled_on:
+		debug_menu.show()
+	else:
+		debug_menu.hide()

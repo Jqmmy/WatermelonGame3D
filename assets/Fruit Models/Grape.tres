@@ -2,15 +2,17 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cvf3"]
 resource_name = "stem"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.376471, 0.611765, 0, 1)
+roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwir4"]
 resource_name = "Grape"
-cull_mode = 2
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-roughness = 0.5
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.678431, 0.290196, 1, 1)
+roughness = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vhb8i"]
 _surfaces = [{
