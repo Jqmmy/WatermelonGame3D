@@ -11,8 +11,6 @@ var escaped:bool = true
 @onready var high_score_n = $UI/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/High_Score_N
 @onready var escape_menu = $"UI/escape menu"
 @onready var settings = $UI/settings
-@onready var debug_menu = $"UI/Debug Menu"
-@onready var fps = $"UI/Debug Menu/FPS"
 
 
 const FRUIT = preload("res://Scenes/Prefabs/Fruit/fruit.tscn")
@@ -59,7 +57,6 @@ func _physics_process(delta):
 	
 	score_n.text = str(ScoreKeeper.score)
 	high_score_n.text = str(ScoreKeeper.high_score)
-	fps.text = str(Engine.get_frames_per_second())
 	
 	if Input.is_action_just_pressed("drop fruit") and timer.is_stopped():
 		timer.start()
@@ -80,9 +77,3 @@ func _on_check_button_toggled(toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
-func _on_show_fps_toggled(toggled_on):
-	if toggled_on:
-		debug_menu.show()
-	else:
-		debug_menu.hide()
