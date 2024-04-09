@@ -37,6 +37,7 @@ environment = SubResource("Environment_8rsh8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0871558, 0.996195, 0, -0.996195, -0.0871558, 0, 5.43006, 0)
+shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -57,10 +58,9 @@ material = SubResource("ShaderMaterial_fwrhn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
 [node name="Death box" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Death box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425371, 0)
 shape = SubResource("BoxShape3D_pecvs")
 
 [node name="Death UI" type="Control" parent="Death box"]

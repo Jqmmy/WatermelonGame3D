@@ -88,6 +88,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="settings" parent="UI" instance=ExtResource("4_1qk3v")]
+visible = false
 layout_mode = 1
 
 [node name="escape menu" type="VBoxContainer" parent="UI"]

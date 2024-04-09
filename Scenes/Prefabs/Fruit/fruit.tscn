@@ -4,7 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://b0tbjfkt55bd7" path="res://assets/Sounds&Music/POP.mp3" id="2_d7arx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aonht"]
-bounce = 0.3
+friction = 0.9
+bounce = 0.05
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5lf8q"]
 resource_local_to_scene = true

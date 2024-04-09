@@ -19,9 +19,11 @@ config/icon="res://assets/Misc/Cherry.PNG"
 
 SaverLoader="*res://Globals/saver_loader.gd"
 ScoreKeeper="*res://Globals/score_keeper.gd"
+Settings="*res://Globals/settings.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 

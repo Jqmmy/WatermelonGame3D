@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bo0nliedxjmji"]
+
+[ext_resource type="Texture2D" uid="uid://cd14go05r66v8" path="res://assets/Materials&Shaders/pineapple_albedo.png" id="1"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1")
+albedo_texture_force_srgb = true
+roughness = 0.0
+uv1_scale = Vector3(2, 2, 2)

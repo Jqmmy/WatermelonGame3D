@@ -1,7 +1,5 @@
 extends Node3D
 
-var camera_speed :float = 0.001
-var movement_speed:float = 0.05
 var escaped:bool = true
 
 @onready var pivot_x = $pivotX
@@ -21,8 +19,8 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * camera_speed)
-		pivot_x.rotate_x(-event.relative.y * camera_speed)
+		rotate_y(-event.relative.x * Settings.SENSITIVITY)
+		pivot_x.rotate_x(-event.relative.y * Settings.SENSITIVITY)
 		pivot_x.rotation.x = clamp(pivot_x.rotation.x, deg_to_rad(-70), deg_to_rad(90))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,8 +30,8 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("camera left","camera right","camera up","camera down")
 	var direction = transform.basis * Vector3(input_dir.x, 0, input_dir.y)
 	if direction:
-		position.x += direction.x * movement_speed
-		position.z += direction.z * movement_speed
+		position.x += direction.x * Settings.MOVEMENT_SPEED
+		position.z += direction.z * Settings.MOVEMENT_SPEED
 	
 	position.x = clamp(position.x, -3.3, 3.3)
 	position.z = clamp(position.z, -3.3, 3.3)

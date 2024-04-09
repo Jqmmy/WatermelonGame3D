@@ -4,7 +4,7 @@
 resource_name = "Peach"
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(1, 0.403922, 0.427451, 1)
+albedo_color = Color(0.94902, 0.364706, 0.278431, 1)
 roughness = 0.0
 
 [resource]

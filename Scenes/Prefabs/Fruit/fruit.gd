@@ -52,6 +52,9 @@ func _process(_delta):
 			audio.play()
 			for fruits in fruit_id:
 				if fruits == number_id:
+					if number_id == 11:
+						queue_free()
+						return
 					number_id += 1
 					init_fruit_type()
 					break

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3hdsw3bya5vb"]
+[gd_scene load_steps=9 format=3 uid="uid://c3hdsw3bya5vb"]
 
 [ext_resource type="Texture2D" uid="uid://bk01soi3d0vpa" path="res://assets/Misc/W_Key_Dark.png" id="1_41bm1"]
 [ext_resource type="Theme" uid="uid://cy62ujnjkosxx" path="res://assets/Materials&Shaders/UI Theme.tres" id="1_170m3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b44v3jbgv5ds3" path="res://assets/Misc/S_Key_Dark.png" id="3_1ordw"]
 [ext_resource type="Texture2D" uid="uid://bexunywc3bt5s" path="res://assets/Misc/D_Key_Dark.png" id="4_hll6q"]
 [ext_resource type="Texture2D" uid="uid://cvdmfpmgwq864" path="res://assets/Misc/Space_Key_Dark.png" id="5_y2nig"]
+[ext_resource type="Texture2D" uid="uid://b8d6dlsw75mlc" path="res://assets/Misc/Mouse_Middle_Key_Dark.png" id="8_lylws"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -25,16 +26,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tab_alignment = 1
+current_tab = 1
 
 [node name="VISUALS AND AUDIO" type="TabBar" parent="settings"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="settings/VISUALS AND AUDIO"]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 202.0
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.3
+anchor_right = 0.25
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_right = 70.0
+offset_bottom = 29.0
+grow_horizontal = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="settings/VISUALS AND AUDIO/MarginContainer"]
 layout_mode = 2
@@ -45,18 +54,73 @@ layout_mode = 2
 text = "FULLSCREEN"
 alignment = 1
 
-[node name="Show FPS" type="CheckButton" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "SHOW DEBUG MENU"
+
+[node name="Label" type="Label" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SENSITIVITY"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 alignment = 1
+
+[node name="SENS SLIDER" type="HSlider" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+min_value = 0.001
+max_value = 5.0
+step = 0.01
+value = 0.501
+exp_edit = true
+
+[node name="SENS" type="Label" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "0.5"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MOVE SPEED"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MOVEMENT SLIDER" type="HSlider" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+min_value = 0.001
+max_value = 1.0
+step = 0.01
+value = 0.011
+
+[node name="MOVEMENT" type="Label" parent="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "0.05"
+horizontal_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="settings/VISUALS AND AUDIO"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
-offset_bottom = 89.0
-grow_horizontal = 2
+anchor_bottom = 1.0
+offset_left = -415.0
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="settings/VISUALS AND AUDIO/VBoxContainer2"]
@@ -69,60 +133,134 @@ horizontal_alignment = 1
 layout_mode = 2
 max_value = 10.0
 step = 0.1
+value = 5.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="settings/VISUALS AND AUDIO/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Label3" type="Label" parent="settings/VISUALS AND AUDIO/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "MUSIC VOLUME"
+horizontal_alignment = 1
+
+[node name="MUSIC VOLUME" type="HSlider" parent="settings/VISUALS AND AUDIO/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+value = 5.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings/VISUALS AND AUDIO/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="Label3" type="Label" parent="settings/VISUALS AND AUDIO/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SFX VOLUME"
+horizontal_alignment = 1
+
+[node name="SFX VOLUME" type="HSlider" parent="settings/VISUALS AND AUDIO/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+value = 5.0
 
 [node name="Controls" type="TabBar" parent="settings"]
-visible = false
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="settings/Controls"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="settings/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="settings/Controls/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="settings/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings/Controls/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="settings/Controls/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="settings/Controls/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="settings/Controls/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="settings/Controls/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_41bm1")
 
-[node name="TextureRect" type="TextureRect" parent="settings/Controls/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="settings/Controls/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_80ix0")
 
-[node name="TextureRect3" type="TextureRect" parent="settings/Controls/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="settings/Controls/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_1ordw")
 
-[node name="TextureRect4" type="TextureRect" parent="settings/Controls/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="settings/Controls/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_hll6q")
 
-[node name="Label" type="Label" parent="settings/Controls/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="settings/Controls/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 50
 text = "WASD TO MOVE"
 horizontal_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="settings/Controls/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="settings/Controls/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="settings/Controls/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="settings/Controls/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 
-[node name="TextureRect" type="TextureRect" parent="settings/Controls/HBoxContainer/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="settings/Controls/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("5_y2nig")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="settings/Controls/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="settings/Controls/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "SPACE TO DROP FRUIT"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="settings/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="settings/Controls/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_lylws")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="settings/Controls/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Mouse To move camera.
+Scroll wheel to zoom in/out"
+
+[node name="BACK" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_right = 0.1
+offset_right = 6.0
+offset_bottom = 6.0
+text = "BACK"
+
+[connection signal="toggled" from="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/FULLSCREEN" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SENS SLIDER" to="." method="_on_sens_slider_value_changed"]
+[connection signal="value_changed" from="settings/VISUALS AND AUDIO/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/MOVEMENT SLIDER" to="." method="_on_movement_slider_value_changed"]
 [connection signal="value_changed" from="settings/VISUALS AND AUDIO/VBoxContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="settings/VISUALS AND AUDIO/VBoxContainer2/VBoxContainer2/MUSIC VOLUME" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="settings/VISUALS AND AUDIO/VBoxContainer2/VBoxContainer/SFX VOLUME" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="pressed" from="BACK" to="." method="_on_back_pressed"]
